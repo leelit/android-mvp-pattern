@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
         mBtnClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mLoginPresenter.doClear();
+                mLoginPresenter.doClearEditTextState();
             }
         });
     }
@@ -109,5 +109,11 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mLoginPresenter.doDestroy();
     }
 }

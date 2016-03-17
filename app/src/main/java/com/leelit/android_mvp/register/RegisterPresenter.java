@@ -1,11 +1,12 @@
 package com.leelit.android_mvp.register;
 
+import com.leelit.android_mvp.IPresenter;
 import com.leelit.android_mvp.LoginModel;
 
 /**
  * Created by Leelit on 2016/3/7.
  */
-public class RegisterPresenter {
+public class RegisterPresenter implements IPresenter{
 
     private IRegisterView mRegisterView;
     private LoginModel mModel;
@@ -56,5 +57,11 @@ public class RegisterPresenter {
 
     public void clearState() {
         mRegisterView.clearState();
+    }
+
+    @Override
+    public void doDestroy() {
+        mRegisterView = null;
+        // if you do with RxJava, you should call unsubscribe() here
     }
 }

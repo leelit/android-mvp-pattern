@@ -103,4 +103,9 @@ public class RegisterActivity extends AppCompatActivity implements IRegisterView
         mEtPasswordConfirm.getText().clear();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mRegisterPresenter.doDestroy();
+    }
 }

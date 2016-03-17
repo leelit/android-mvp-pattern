@@ -1,11 +1,12 @@
 package com.leelit.android_mvp.login;
 
+import com.leelit.android_mvp.IPresenter;
 import com.leelit.android_mvp.LoginModel;
 
 /**
  * Created by Leelit on 2016/3/6.
  */
-public class LoginPresenter {
+public class LoginPresenter implements IPresenter {
 
     private ILoginView mLoginView;
 
@@ -43,7 +44,14 @@ public class LoginPresenter {
         });
     }
 
-    public void doClear() {
+    public void doClearEditTextState() {
         mLoginView.clearState();
+    }
+
+
+    @Override
+    public void doDestroy() {
+        mLoginView = null;
+        // if you do with RxJava, you should call unsubscribe() here
     }
 }
